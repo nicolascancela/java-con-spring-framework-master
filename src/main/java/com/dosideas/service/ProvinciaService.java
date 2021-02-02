@@ -13,6 +13,6 @@ import com.dosideas.domain.Provincia;
  */
 public interface ProvinciaService {
 
-    public Provincia buscarPorId(long id);
+    Provincia buscarPorId(long id);
     
 }

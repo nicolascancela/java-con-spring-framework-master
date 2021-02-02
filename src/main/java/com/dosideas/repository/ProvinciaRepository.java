@@ -12,5 +12,5 @@ import com.dosideas.domain.Provincia;
  * @author Usuario
  */
 public interface ProvinciaRepository {
-    public Provincia findById(long id);
+    Provincia findById(long id);
 }

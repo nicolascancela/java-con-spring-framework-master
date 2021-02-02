@@ -6,7 +6,6 @@
 package com.dosideas.service;
 
 import com.dosideas.domain.Provincia;
-import com.dosideas.service.impl.ProvinciaServiceImpl;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -15,15 +14,15 @@ import org.junit.Test;
  * @author Usuario
  */
 public class ProvinciaServiceImplTest {
-    
+
     @Test
-    public void buscarPorId_conIdExistente_retornaProvincia(){
-        ProvinciaService service = new ProvinciaServiceImpl();
+    public void buscarPorId_conIdExistente_retornaProvincia() {
+        ResolvedorDependencias rd = new ResolvedorDependencias();
+        ProvinciaService service = rd.getService();
         Long id = 22L;
         Provincia provincia = service.buscarPorId(id);
         Assert.assertNotNull(provincia);
         Assert.assertEquals(id, provincia.getId());
-        
     }
-    
+
 }

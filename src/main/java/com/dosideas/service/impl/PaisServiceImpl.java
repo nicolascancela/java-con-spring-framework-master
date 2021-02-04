@@ -29,10 +29,12 @@ import java.util.List;
 public class PaisServiceImpl implements PaisService {
 
     private final PaisRepository paisRepository;
-
+    //Forma recomendada de hacer inyecciones --> constructores.
+    //Autowired --> inyecta dependencias por setter. Para constructores vacios.
     public PaisServiceImpl(PaisRepository paisRepository) {
         this.paisRepository = paisRepository;
     }
+   
 
     @Override
     public Pais buscarPorId(Long id) {

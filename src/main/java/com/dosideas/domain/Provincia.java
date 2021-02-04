@@ -5,16 +5,42 @@
  */
 package com.dosideas.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 /**
  *
  * @author Usuario
  */
+@Entity
 public class Provincia {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     private String nombre;
+    
+    //Investigamos mapeo de muchos a uno.
+    @ManyToOne
+    @JoinColumn(name = "id_pais")
+    private Pais pais;
 
     public Long getId() {
         return id;
+    }
+
+    public Pais getPais() {
+        return pais;
+    }
+
+    public void setPais(Pais pais) {
+        this.pais = pais;
     }
 
     public void setId(Long id) {

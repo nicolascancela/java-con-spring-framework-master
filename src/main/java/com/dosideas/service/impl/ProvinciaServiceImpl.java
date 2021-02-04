@@ -7,23 +7,19 @@ package com.dosideas.service.impl;
 
 import com.dosideas.domain.Provincia;
 import com.dosideas.repository.ProvinciaRepository;
-import com.dosideas.repository.impl.ProvinciaRepositoryImpl;
-import com.dosideas.service.DependencyServiceSolver1;
 import com.dosideas.service.ProvinciaService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-/**
- *
- * @author Usuario
- */
+@Service
+@Transactional
 public class ProvinciaServiceImpl implements ProvinciaService {
     
+    @Autowired
     private ProvinciaRepository provinciaRepository;
-    
     //Inversión de control: la clase invierte el control de su dependencia, no las controla, las recibe.
     //Brinda mecanismo para que un tercero setee las dependencias.
-    public ProvinciaServiceImpl(ProvinciaRepository provinciaRepository){
-        this.provinciaRepository = provinciaRepository;
-    }
 
     public ProvinciaRepository getProvinciaRepository() {
         return provinciaRepository;

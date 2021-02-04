@@ -17,7 +17,7 @@ import javax.persistence.OneToMany;
  *
  * @author Usuario
  */
-@Entity
+@Entity //Esta clase esta relacionada con una tabla.
 public class Provincia {
     
     @Id

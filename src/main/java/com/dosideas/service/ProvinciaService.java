@@ -6,6 +6,8 @@
 package com.dosideas.service;
 
 import com.dosideas.domain.Provincia;
+import com.dosideas.exception.NombreInvalidoException;
+import java.util.Collection;
 
 /**
  *
@@ -13,6 +15,10 @@ import com.dosideas.domain.Provincia;
  */
 public interface ProvinciaService {
 
-    Provincia buscarPorId(long id);
-    
+    public Provincia buscarPorId(long id);
+
+    public Collection<Provincia> buscarProvinciasPorNombreExacto(String nombre) throws NombreInvalidoException;
+
+    public Collection<Provincia> buscarProvinciasPorNombreParcial(String nombreProvincia);
+
 }

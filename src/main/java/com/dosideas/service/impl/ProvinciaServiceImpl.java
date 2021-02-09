@@ -7,9 +7,11 @@ package com.dosideas.service.impl;
 
 import com.dosideas.domain.Provincia;
 import com.dosideas.exception.NombreInvalidoException;
+import com.dosideas.exception.ProvinciaInvalidaException;
 import com.dosideas.repository.ProvinciaRepository;
 import com.dosideas.service.ProvinciaService;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,6 +46,31 @@ public class ProvinciaServiceImpl implements ProvinciaService {
         }
     }
 
+    //IDEA ANTERIOR: Hacer el método los más generico posible para no tener tantos métodos.
+    private void validarObjetoNull(Object objeto, String msjExcepcion) throws ProvinciaInvalidaException {
+        if (objeto == null) {
+            throw new ProvinciaInvalidaException(msjExcepcion);
+        }
+    }
+
+    private void validarProvinciaNull(Provincia provincia) throws ProvinciaInvalidaException {
+        if (provincia == null) {
+            throw new ProvinciaInvalidaException("La provincia es nula");
+        }
+    }
+
+    private void validarNombreProvinciaNull(String string) throws ProvinciaInvalidaException {
+        if (string == null) {
+            throw new ProvinciaInvalidaException("El nombre de la provincia es nulo");
+        }
+    }
+
+    private void validarIDProvinciaNull(Long id) throws ProvinciaInvalidaException {
+        if (id == null) {
+            throw new ProvinciaInvalidaException("El id de la provincia es nulo");
+        }
+    }
+
     private void validarInputmenora3Caracteres(String nombre) throws NombreInvalidoException {
         if (nombre.length() < 3) {
             throw new NombreInvalidoException("El nombre ingresado es menor a 3 caracteres");
@@ -60,6 +87,21 @@ public class ProvinciaServiceImpl implements ProvinciaService {
     @Override
     public Collection<Provincia> buscarProvinciasPorNombreParcial(String nombreProvincia) {
         return provinciaRepository.findByNombreContainingIgnoreCase(nombreProvincia);
+    }
+
+    @Override
+    public void guardarProvincia(Provincia provincia) throws Exception {
+        validarProvinciaNull(provincia);
+        validarIDProvinciaNull(provincia.getId());
+        validarNombreProvinciaNull(provincia.getNombre());
+        validarInputmenora3Caracteres(provincia.getNombre());
+        provinciaRepository.save(provincia);
+
+    }
+
+    @Override
+    public List<Provincia> buscarProvinciasPorNombrePais(String nombrePais) {
+        return provinciaRepository.findProvinciasPorPais(nombrePais);
     }
 }
 

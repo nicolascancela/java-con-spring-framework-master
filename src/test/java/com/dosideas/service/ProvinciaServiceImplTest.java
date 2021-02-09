@@ -8,7 +8,9 @@ package com.dosideas.service;
 import com.dosideas.ApplicationConfig;
 import com.dosideas.domain.Provincia;
 import com.dosideas.exception.NombreInvalidoException;
+import com.dosideas.exception.ProvinciaInvalidaException;
 import java.util.Collection;
+import java.util.List;
 import javax.transaction.Transactional;
 import static org.assertj.core.api.Assertions.fail;
 import org.junit.Assert;
@@ -73,6 +75,42 @@ public class ProvinciaServiceImplTest {
         Collection<Provincia> provincias = provinciaService.buscarProvinciasPorNombreParcial(nombreProvincia);
         System.out.println(provincias.size());
         //Assert.assertTrue(provincias.size()>0);
+    }
+    
+    @Test
+    public void guardarProvincia_conProvinciaNull_lanzaProvinciaInvalidaException(){
+        Provincia provincia = null;
+        Exception excepcion = assertThrows(ProvinciaInvalidaException.class, () -> provinciaService.guardarProvincia(provincia));
+        Assert.assertEquals("La provincia es nula", excepcion.getMessage());
+    }
+    
+    
+    @Test
+    public void guardarProvincia_conIDProvinciaNull_lanzaProvinciaInvalidaException(){
+        Provincia provincia = new Provincia();
+        provincia.setId(null);
+        provincia.setNombre("PROVINCIA");
+        provincia.setPais(null);
+        Exception excepcion = assertThrows(ProvinciaInvalidaException.class, () -> provinciaService.guardarProvincia(provincia));
+        Assert.assertEquals("El id de la provincia es nulo", excepcion.getMessage());
+    }
+    
+    
+    @Test
+    public void guardarProvincia_conNombreProvinciaNull_lanzaProvinciaInvalidaException(){
+        Provincia provincia = new Provincia();
+        provincia.setId(1L);
+        provincia.setNombre(null);
+        provincia.setPais(null);
+        Exception excepcion = assertThrows(ProvinciaInvalidaException.class, () -> provinciaService.guardarProvincia(provincia));
+        Assert.assertEquals("El nombre de la provincia es nulo", excepcion.getMessage());
+    }
+    
+    @Test
+    public void buscarProvinciaPorPais_conNombrePaisExistente_devuelveProvincias(){
+        String nombrePais = "Argentina";
+        List<Provincia> provincias = provinciaService.buscarProvinciasPorNombrePais(nombrePais);
+        Assert.assertTrue(provincias.size()>0);
     }
     
     //@Test

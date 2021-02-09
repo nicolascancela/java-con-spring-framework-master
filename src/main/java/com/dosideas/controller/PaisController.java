@@ -24,6 +24,8 @@ public class PaisController {
     @Autowired
     private PaisService paisService;
 
+    
+    //localhost:8080/paises
     @RequestMapping("/paises")
     public String paises(Model model) {
         List<Pais> paises = paisService.buscarTodos();

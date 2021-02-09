@@ -96,7 +96,6 @@ public class ProvinciaServiceImpl implements ProvinciaService {
         validarNombreProvinciaNull(provincia.getNombre());
         validarInputmenora3Caracteres(provincia.getNombre());
         provinciaRepository.save(provincia);
-
     }
 
     @Override

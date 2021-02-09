@@ -1,0 +1,47 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Provincias de Sudamerica</title>
+    </head>
+
+    <body>
+        <h1>Hola estas son las provincias</h1>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Provincias</h1>
+                </div>
+            </div>
+            <hr/>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Todas las provincias de Argentina</h4>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre Provincia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <th:block th:each="provincia : ${listaprovincias}">
+                                <tr>
+                                    <td th:text="${provincia.id}"></td>
+                                    <td th:text="${provincia.nombre}"></td>
+                                </tr>
+                            </th:block>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+        
+        
+        
+        
+         <!-- Lib JS -->
+        <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+        <script th:src="@{/vendor/twitter-bootstrap/js/bootstrap.min.js}"></script>
+    </body>
+</html>

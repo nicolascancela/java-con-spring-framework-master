@@ -23,11 +23,13 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api/pais")
+//localhost:8080/api/pais
 public class PaisRestController {
 
     @Autowired
     private PaisService paisService;
 
+    //localhost:8080/api/pais/1
     @GetMapping("/{id}")
     public Pais buscarPorId(@PathVariable Long id) throws PaisNoEncontradoException {
         Pais pais = paisService.buscarPorId(id);

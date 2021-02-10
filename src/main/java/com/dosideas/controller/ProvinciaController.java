@@ -19,15 +19,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class ProvinciaController {
-    
+
     @Autowired
-    private ProvinciaService provinciaService; 
-    
+    private ProvinciaService provinciaService;
+
     //localhost:8080/provincias
     @RequestMapping("/provincias")
-    public String provincias(Model model){
+    public String provincias(Model model) {
         List<Provincia> listadoProvincias = provinciaService.buscarProvinciasPorNombrePais("Argentina");
-        model.addAttribute("listaprovincias",listadoProvincias);
+        model.addAttribute("listaprovincias", listadoProvincias);
         return "provincias";
+    }
+
+    @RequestMapping("/test")
+    public String test(Model model) {
+        //List<Provincia> listadoProvincias = provinciaService.buscarProvinciasPorNombrePais("Argentina");
+        //model.addAttribute("listaprovincias", listadoProvincias);
+        return "test";
     }
 }

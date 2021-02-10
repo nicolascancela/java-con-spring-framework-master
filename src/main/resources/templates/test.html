@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <link th:href="@{/vendor/twitter-bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
+        <script th:src="@{/vendor/jquery/jquery.min.js}"></script>
+        <title>Test de binding de controles</title>   
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>Esto debería abrir una ventana modal</h1>
+            <button id="boton1">Boton de prueba</button>
+            <h1>Esto debería abrir una alerta</h1>
+            <button id="boton2" value = "Toggle Alert">Boton de alerta</button>
+        </div>
+
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="ventana" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">¡Esta es una ventana modal!</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Y si, ¿Qué pensaste que iba a abrir ese botón?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div> 
+            </div>   
+        </div>
+
+
+        <div class="alert alert-success alert-dismissible" style='display:none;'>¡Esta es una alerta!
+            <button data-dismiss="alert" type="button" class="close" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+
+
+        <!-- Lib JS -->
+
+        <script th:src="@{/vendor/twitter-bootstrap/js/bootstrap.min.js}"></script>
+        <script th:src="@{/js/escuelita.js}"></script>
+        <script th:src="@{/js/ui/ui.js}"></script>
+        <script th:src="@{/js/ui/test/test.js}"></script>    
+
+    </body>
+
+</html>

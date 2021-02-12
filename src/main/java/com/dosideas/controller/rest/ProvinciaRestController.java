@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/provincia")
 //localhost:8080/api/provincia
-public class ProvincaRestController {
+public class ProvinciaRestController {
     
     @Autowired
     private ProvinciaService provinciaService;
